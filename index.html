@@ -1,272 +1,442 @@
-<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" width="400">
-section class="gallery">
-  <h2>معرض الصور 📸</h2>
-
-  <div class="gallery-grid">
-    <img src="IMG_5278.webp" width="400">
-    <img src="IMG_5275.jpeg" width="400">
-<img src="IMG_5277.jpeg" width="400">
-<img src="IMG_5279.jpeg" width="400">
-  </div>
-</section>
-<h2>سكان الـ800 فدان 🏠</h2>
-<h1>أهلاً بيك في مجتمع الـ800 فدان 👋</h1>
-<p>كل ما يخص سكان زهراء أكتوبر الجديدة في مكان واحد.</p>
-<section class="news">
-  <h2>أخبار وإعلانات الـ800 فدان 📰</h2>
-
-  <div class="news-box">
-    <h3>📢 إعلانات مهمة</h3>
-    <p>هنا هنضيف أخبار وإعلانات تهم سكان المنطقة.</p>
-    <button onclick="alert('سيتم إضافة الإعلانات قريباً 📢')">
-      عرض الإعلانات
-    </button>
-  </div>
-
-  <div class="news-box">
-    <h3>🏠 أخبار المنطقة</h3>
-    <p>تابع كل جديد يخص سكان الـ800 فدان.</p>
-  </div>
-</section>
-
-<section class="services">
-  <h2>الخدمات والأماكن المهمة 📍</h2>
-  <p>أماكن وخدمات تهم سكان الـ800 فدان</p>
-
-  <div class="services-grid">
-
-    <div class="service-card">
-      <h3>💊 صيدليات</h3>
-      <p>صيدليات قريبة من المنطقة</p>
-      <button onclick="alert('هنضيف أسماء وأرقام الصيدليات هنا')">
-        عرض التفاصيل
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سكان الـ800 فدان</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      line-height: 1.7;
+    }
+    header {
+      background: #176b4d;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+    header p {
+      margin: 0;
+      font-size: 18px;
+    }
+    section {
+      width: 92%;
+      max-width: 1000px;
+      margin: 25px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 25px;
+    }
+    .gallery-grid,
+    .directory-grid,
+    .services-grid,
+    .ads-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .card {
+      background: #f8faf9;
+      border: 1px solid #e2e8e5;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+    }
+    .directory-card {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .directory-card:hover {
+      transform: translateY(-3px);
+    }
+    .directory-card h3 {
+      font-size: 21px;
+      margin: 5px 0;
+    }
+    button {
+      border: 0;
+      border-radius: 12px;
+      background: #176b4d;
+      color: white;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .category-box {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #eef7f2;
+      text-align: center;
+    }
+    .category-box.active {
+      display: block;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: inherit;
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .news-box {
+      background: #f8faf9;
+      border-right: 5px solid #176b4d;
+      padding: 18px;
+      margin: 15px 0;
+      border-radius: 12px;
+    }
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 18px;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+    footer {
+      background: #176b4d;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 30px;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+      header p {
+        font-size: 16px;
+      }
+      section {
+        width: 94%;
+        padding: 18px;
+        margin: 18px auto;
+      }
+      h2 {
+        font-size: 21px;
+      }
+      .gallery-grid,
+      .directory-grid,
+      .services-grid,
+      .ads-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid img {
+        height: 210px;
+      }
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏠 سكان الـ800 فدان</h1>
+    <p>كل ما يخص سكان زهراء أكتوبر الجديدة في مكان واحد</p>
+  </header>
+  <section>
+    <h2>أهلاً بيك في مجتمع الـ800 فدان 👋</h2>
+    <p style="text-align:center;">
+      هنا هتلاقي أخبار المنطقة والخدمات والمحلات والمطاعم والمواصلات وكل ما يهم السكان.
+    </p>
+  </section>
+  <section class="gallery">
+    <h2>معرض صور الـ800 فدان 📸</h2>
+    <div class="gallery-grid">
+      <img src="IMG_5278.webp" alt="800 فدان">
+      <img src="IMG_5275.jpeg" alt="800 فدان">
+      <img src="IMG_5277.jpeg" alt="800 فدان">
+      <img src="IMG_5279.jpeg" alt="800 فدان">
+    </div>
+  </section>
+  <section class="news">
+    <h2>أخبار وإعلانات الـ800 فدان 📰</h2>
+    <div class="news-box">
+      <h3>📢 إعلانات مهمة</h3>
+      <p>هنا هنضيف الأخبار والإعلانات اللي تهم سكان المنطقة.</p>
+      <button onclick="alert('سيتم إضافة الإعلانات قريباً 📢')">
+        عرض الإعلانات
       </button>
     </div>
-
-    <div class="service-card">
-      <h3>🛒 محلات</h3>
-      <p>محلات وسوبر ماركت قريبة</p>
-      <button onclick="alert('هنضيف المحلات هنا')">
-        عرض التفاصيل
-      ">
-      <h3>🔧 صيانة</h3>
-      <p>سباكة وكهرباء وصيانة</p>
-      <button onclick="alert"( متواجدون في كل القطاعات')">
-        عرض التفاصيل
-      </button>
-    </div>">
-       التفاصيل
-
-    <div class="service-card">
-      <h3>🚌 مواصلات</h3>
-      <p>معلومات عن المواصلات</p>
-      <button onclick="alert('هنضيف خطوط ومواعيد المواصلات هنا')">
-        عرض التفاصيل
-      </button>
-    </div>متاحه ٢٤ ساعه
-
-  </div>
-</section>
-
-<section class="map-section">
-  <h2>خريطة الـ800 فدان 🗺️</h2>
-  <p>تقدر تشوف موقع المنطقة على الخريطة</p>
-
-  <iframe
-    src="https://www.google.com/maps?q=زهراء+أكتوبر+الجديدة+800+فدان&output=embed"
-    width="100%"
-    height="350"
-    style="border:0; border-radius:20px;"
-    loading="lazy">
-  </iframe>
-</section>
-<section class="ad-section">
-  <h2>📢 أعلن عن نشاطك في الـ800 فدان</h2>
-  <p>عندك محل أو خدمة؟ وصل إعلانك لسكان المنطقة.</p>
-
-  <div class="ad-card">
-    <h3>⭐ إعلان مميز</h3>
-    <p>اسم النشاط + صور + رقم الهاتف + الموقع.</p>
-
-    <button onclick="alert('للحجز تواصل معنا 📞')">
-      احجز إعلان
-    </button>
-  </div>
-</section>
-<section class="contact-form">
-  <h2>📝 طلب إعلان</h2>
-  <p>املأ البيانات وسنتواصل معك.</p>
-
-  <form onsubmit="sendAd(); return false;">
-
-    <input id="businessName" type="text"
-      placeholder="اسم المحل أو النشاط" required>
-
-    <input id="phone" type="tel"
-      placeholder="رقم الهاتف" required>
-
-    <select id="category" required>
-      <option value="">اختر نوع النشاط</option>
-      <option>مطعم</option>
-      <option>محل</option>
-      <option>صيدلية</option>
-      <option>صيانة</option>
-      <option>خدمة أخرى</option>
-    </select>
-
-    <textarea id="description"
-      placeholder="اكتب تفاصيل الإعلان"></textarea>
-
-    <button type="submit">
-      إرسال الطلب 📩
-    </button>
-
-  </form>
-</section>
-<section class="featured-ads">
-  <h2>⭐ الإعلانات المميزة</h2>
-  <p>أبرز المحلات والخدمات في الـ800 فدان</p>
-
-  <div class="ads-grid">
-
-    <div class="business-card">
-      <div class="business-icon">🍔</div>
-      <h3>اسم المطعم</h3>
-      <p>مطعم ومأكولات</p>
-      <button onclick="alert('سيتم إضافة رقم وموقع النشاط هنا')">
-        التفاصيل
+    <div class="news-box">
+      <h3>🏠 أخبار المنطقة</h3>
+      <p>تابع كل جديد يخص سكان الـ800 فدان.</p>
+    </div>
+  </section>
+  <section class="directory">
+    <h2>🏪 دليل محلات وخدمات الـ800 فدان</h2>
+    <p style="text-align:center;">
+      اختار القسم اللي عايز تدور فيه
+    </p>
+    <div class="directory-grid">
+      <div class="card directory-card" onclick="showCategory('المطاعم')">
+        <h3>🍔 المطاعم</h3>
+        <p>مطاعم وأكل</p>
+        <button>عرض المطاعم</button>
+      </div>
+      <div class="card directory-card" onclick="showCategory('الصيدليات')">
+        <h3>💊 الصيدليات</h3>
+        <p>صيدليات وخدمات طبية</p>
+        <button>عرض الصيدليات</button>
+      </div>
+      <div class="card directory-card" onclick="showCategory('المحلات')">
+        <h3>🛒 المحلات</h3>
+        <p>سوبر ماركت ومحلات</p>
+        <button>عرض المحلات</button>
+      </div>
+      <div class="card directory-card" onclick="showCategory('الصيانة')">
+        <h3>🔧 الصيانة</h3>
+        <p>كهرباء وسباكة وصيانة</p>
+        <button>عرض الخدمات</button>
+      </div>
+      <div class="card directory-card" onclick="showCategory('المواصلات')">
+        <h3>🚌 المواصلات</h3>
+        <p>مواصلات وخطوط السير</p>
+        <button>عرض المواصلات</button>
+      </div>
+      <div class="card directory-card" onclick="showCategory('أماكن مهمة')">
+        <h3>📍 أماكن مهمة</h3>
+        <p>أماكن وخدمات مهمة للسكان</p>
+        <button>عرض الأماكن</button>
+      </div>
+    </div>
+    <div id="categoryMessage" class="category-box"></div>
+  </section>
+  <section class="search-section">
+    <h2>🔎 ابحث في الـ800 فدان</h2>
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="اكتب اسم المحل أو الخدمة..."
+      onkeyup="searchBusiness()"
+    >
+    <div id="searchResult"></div>
+  </section>
+  <section class="services">
+    <h2>الخدمات والأماكن المهمة 📍</h2>
+    <div class="services-grid">
+      <div class="card">
+        <h3>💊 صيدليات</h3>
+        <p>صيدليات قريبة من المنطقة</p>
+      </div>
+      <div class="card">
+        <h3>🛒 محلات</h3>
+        <p>محلات وسوبر ماركت</p>
+      </div>
+      <div class="card">
+        <h3>🔧 صيانة</h3>
+        <p>سباكة وكهرباء وصيانة</p>
+      </div>
+      <div class="card">
+        <h3>🚌 مواصلات</h3>
+        <p>معلومات عن المواصلات</p>
+      </div>
+    </div>
+  </section>
+  <section class="map-section">
+    <h2>خريطة الـ800 فدان 🗺️</h2>
+    <p style="text-align:center;">تقدر تشوف موقع المنطقة على الخريطة</p>
+    <iframe
+      src="https://www.google.com/maps?q=زهراء+أكتوبر+الجديدة+800+فدان&output=embed"
+      height="350"
+      loading="lazy">
+    </iframe>
+  </section>
+  <section class="ad-section">
+    <h2>📢 أعلن عن نشاطك في الـ800 فدان</h2>
+    <div class="card">
+      <h3>⭐ إعلان مميز</h3>
+      <p>عندك محل أو خدمة؟ وصل إعلانك لسكان المنطقة.</p>
+      <button onclick="document.querySelector('.register-business').scrollIntoView({behavior:'smooth'})">
+        احجز إعلان
       </button>
     </div>
-
-    <div class="business-card">
-      <div class="business-icon">💊</div>
-      <h3>اسم الصيدلية</h3>
-      <p>صيدلية وخدمات طبية</p>
-      <button onclick="alert('سيتم إضافة رقم وموقع النشاط هنا')">
-        التفاصيل
+  </section>
+  <section class="register-business">
+    <h2>🏪 سجّل نشاطك في الـ800 فدان</h2>
+    <p style="text-align:center;">
+      أضف محلك أو خدمتك ليظهر أمام سكان المنطقة.
+    </p>
+    <form onsubmit="registerBusiness(); return false;">
+      <input
+        id="shopName"
+        type="text"
+        placeholder="اسم المحل أو النشاط"
+        required
+      >
+      <select id="shopType" required>
+        <option value="">نوع النشاط</option>
+        <option>مطعم</option>
+        <option>سوبر ماركت</option>
+        <option>صيدلية</option>
+        <option>ملابس</option>
+        <option>صيانة</option>
+        <option>خدمة أخرى</option>
+      </select>
+      <input
+        id="shopPhone"
+        type="tel"
+        placeholder="رقم الهاتف"
+        required
+      >
+      <input
+        id="shopLocation"
+        type="text"
+        placeholder="مكان المحل داخل الـ800 فدان"
+        required
+      >
+      <button type="submit">
+        تسجيل النشاط 📩
       </button>
+    </form>
+  </section>
+  <section class="featured-ads">
+    <h2>⭐ الإعلانات المميزة</h2>
+    <p style="text-align:center;">
+      أبرز المحلات والخدمات في الـ800 فدان
+    </p>
+    <div class="ads-grid">
+      <div class="card">
+        <div style="font-size:40px;">🍔</div>
+        <h3>مطاعم</h3>
+        <p>سيتم إضافة المطاعم هنا</p>
+      </div>
+      <div class="card">
+        <div style="font-size:40px;">💊</div>
+        <h3>صيدليات</h3>
+        <p>سيتم إضافة الصيدليات هنا</p>
+      </div>
+      <div class="card">
+        <div style="font-size:40px;">🔧</div>
+        <h3>خدمات صيانة</h3>
+        <p>سيتم إضافة خدمات الصيانة هنا</p>
+      </div>
     </div>
-
-    <div class="business-card">
-      <div class="business-icon">🔧</div>
-      <h3>خدمة صيانة</h3>
-      <p>سباكة وكهرباء وصيانة</p>
-      <button onclick="alert('سيتم إضافة رقم وموقع النشاط هنا')">
-        التفاصيل
-      </button>
-    </div>
-
-  </div>
-</section>
-<a
-  href="https://wa.me/201124993559"
-  class="whatsapp-btn"
-  target="_blank">
-  💬
-</a>
-<section class="register-business">
-  <h2>🏪 سجّل نشاطك في الـ800 فدان</h2>
-  <p>أضف محلك أو خدمتك ليظهر أمام سكان المنطقة.</p>
-
-  <form onsubmit="registerBusiness(); return false;">
-
-    <input id="shopName" type="text"
-      placeholder="اسم المحل أو النشاط" required>
-
-    <select id="shopType" required>
-      <option value="">نوع النشاط</option>
-      <option>مطعم</option>
-      <option>سوبر ماركت</option>
-      <option>صيدلية</option>
-      <option>ملابس</option>
-      <option>صيانة</option>
-      <option>خدمة أخرى</option>
-    </select>
-
-    <input id="shopPhone" type="tel"
-      placeholder="رقم الهاتف" required>
-
-    <input id="shopLocation" type="text"
-      placeholder="مكان المحل داخل الـ800 فدان" required>
-
-    <button type="submit">
-      تسجيل النشاط 📩
-    </button>
-
-  </form>
-</section>
-
-function registerBusiness() {
-  const name = document.getElementById("shopName").value;
-  const type = document.getElementById("shopType").value;
-  const phone = document.getElementById("shopPhone").value;
-  const location = document.getElementById("shopLocation").value;
-
-  const message =
-    "تسجيل نشاط جديد 🏪%0A%0A" +
-    "اسم النشاط: " + name + "%0A" +
-    "النوع: " + type + "%0A" +
-    "الهاتف: " + phone + "%0A" +
-    "المكان: " + location;
-
-  const myWhatsApp = "201124993559";
-
-  window.open(
-    "https://wa.me/" + myWhatsApp + "?text=" + message,
-    "_blank"
-  )؛
-}
-<section class="directory">
-  <h2>🏪 دليل محلات وخدمات الـ800 فدان</h2>
-  <p>اعرف المحلات والخدمات الموجودة في المنطقة</p>
-
-  <div class="directory-grid">
-
-    <div class="directory-card">
-      <h3>🍔 مطاعم</h3>
-      <p>مطاعم وأكل</p>
-      <button onclick="showCategory('المطاعم')">
-        عرض المطاعم
-      </button>
-    </div>
-
-    <div class="directory-card">
-      <h3>💊 صيدليات</h3>
-      <p>صيدليات وخدمات طبية</p>
-      <button onclick="showCategory('الصيدليات')">
-        عرض الصيدليات
-      </button>
-    </div>
-
-    <div class="directory-card">
-      <h3>🛒 محلات</h3>
-      <p>سوبر ماركت ومحلات</p>
-      <button onclick="showCategory('المحلات')">
-        عرض المحلات
-      </button>
-    </div>
-
-    <div class="directory-card">
-      <h3>🔧 صيانة</h3>
-      <p>كهرباء وسباكة وصيانة</p>
-      <button onclick="showCategory('الصيانة')">
-        عرض الخدمات
-      </button>
-    </div>
-
-  </div>
-
-  <p id="categoryMessage"></p>
-</section>
-<section class="search-section">
-  <h2>🔎 ابحث في الـ800 فدان</h2>
-
-  <input
-    id="searchInput"
-    type="text"
-    placeholder="اكتب اسم المحل أو الخدمة..."
-    onkeyup="searchBusiness()"
-  >
-
-  <div id="searchResult"></div>
-</section>
+  </section>
+  <a
+    href="https://wa.me/201124993559"
+    class="whatsapp-btn"
+    target="_blank"
+    aria-label="واتساب">
+    💬
+  </a>
+  <footer>
+    <p>🏠 سكان الـ800 فدان</p>
+    <p>مجتمع لخدمة سكان المنطقة ❤️</p>
+  </footer>
+  <script>
+    function showCategory(category) {
+      const box = document.getElementById("categoryMessage");
+      const messages = {
+        "المطاعم": "🍔 هنا هتظهر المطاعم الموجودة في الـ800 فدان.",
+        "الصيدليات": "💊 هنا هتظهر الصيدليات الموجودة في المنطقة.",
+        "المحلات": "🛒 هنا هتظهر المحلات والسوبر ماركت.",
+        "الصيانة": "🔧 هنا هتظهر خدمات الكهرباء والسباكة والصيانة.",
+        "المواصلات": "🚌 هنا هتظهر معلومات المواصلات وخطوط السير.",
+        "أماكن مهمة": "📍 هنا هتظهر الأماكن والخدمات المهمة."
+      };
+      box.innerHTML =
+        "<h3>" + category + "</h3>" +
+        "<p>" + messages[category] + "</p>" +
+        "<p>سيتم إضافة البيانات قريباً.</p>";
+      box.classList.add("active");
+      box.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+    function searchBusiness() {
+      const input =
+        document.getElementById("searchInput").value.trim();
+      const result =
+        document.getElementById("searchResult");
+      if (input === "") {
+        result.innerHTML = "";
+        return;
+      }
+      result.innerHTML =
+        "<div class='card' style='margin-top:15px;'>" +
+        "🔎 بتدور على: <strong>" +
+        input +
+        "</strong><br>" +
+        "سيتم عرض النتائج هنا بعد إضافة المحلات والخدمات." +
+        "</div>";
+    }
+    function registerBusiness() {
+      const name =
+        document.getElementById("shopName").value;
+      const type =
+        document.getElementById("shopType").value;
+      const phone =
+        document.getElementById("shopPhone").value;
+      const location =
+        document.getElementById("shopLocation").value;
+      const message =
+        "تسجيل نشاط جديد 🏪\n\n" +
+        "اسم النشاط: " + name + "\n" +
+        "النوع: " + type + "\n" +
+        "الهاتف: " + phone + "\n" +
+        "المكان: " + location;
+      const myWhatsApp = "201124993559";
+      window.open(
+        "https://wa.me/" +
+        myWhatsApp +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+      );
+    }
+  </script>
+</body>
+</html>
